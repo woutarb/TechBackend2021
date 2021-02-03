@@ -1,0 +1,28 @@
+{
+  "name": "techdatingbackend2021",
+  "version": "1.0.0",
+  "description": "\"Package to calculate match % in users based on beer preferences\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wouterBijns/TechBackend2021.git"
+  },
+  "keywords": [
+    "\"Beer\"",
+    "\"Maths\"",
+    "\"dating\""
+  ],
+  "author": "Wouter Bijnsdorp",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wouterBijns/TechBackend2021/issues"
+  },
+  "homepage": "https://github.com/wouterBijns/TechBackend2021#readme",
+  "dependencies": {
+    "camelcase": "^6.2.0",
+    "nodemon": "^2.0.7"
+  }
+}
