@@ -10,10 +10,6 @@ app.get('/profile',(req, res) =>{
     res.send("Your profile")
 });
 
-app.get('/profile/:',(req, res) =>{
-    res.send(`Profile of user ${req.params.movieID}`)
-});
-
 app.listen(port, ()=>{
     console.log(`Example app listening on port ${port}!`)
 });
