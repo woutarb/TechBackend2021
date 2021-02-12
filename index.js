@@ -1,11 +1,12 @@
 const express = require('express')
+const pug = require('pug');
 const app = express()
 const port = 3000
 
-app.use(express.static('public'))
+app.set('view engine', 'pug')
 
 app.get('/',(req, res) =>{
-    res.send("Hello World - Welcome to the main page")
+    res.render('index')
 });
 
 app.get('/profile',(req, res) =>{
@@ -22,14 +23,6 @@ app.get('/selection',(req, res) =>{
 
 app.get('/beer',(req, res) =>{
     res.send("Here's the information about a certain beer")
-});
-
-app.get('/beerlc',(req, res) =>{
-    /* Doesn't work yet???
-    res.sendFile('lchouffe.html',{
-    root:Path2D.join(__dirname, './') 
-    })
-    */
 });
 
 app.listen(port, ()=>{
