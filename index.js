@@ -4,25 +4,28 @@ const app = express()
 const port = 3000
 
 app.set('view engine', 'pug')
+var path = require('path');
+app.set('views', path.join(__dirname, '/pugfilesOrigin'));
+
 
 app.get('/',(req, res) =>{
     res.render('index')
 });
 
 app.get('/profile',(req, res) =>{
-    res.send("Your profile")
+    res.render('profile')
 });
 
 app.get('/user',(req, res) =>{
-    res.send("A different profile")
+    res.render('otheruser')
 });
 
 app.get('/selection',(req, res) =>{
-    res.send("A selection of beers you could choose from")
+    res.render('selectbeer')
 });
 
 app.get('/beer',(req, res) =>{
-    res.send("Here's the information about a certain beer")
+    res.render('beer')
 });
 
 app.listen(port, ()=>{
@@ -30,6 +33,6 @@ app.listen(port, ()=>{
 });
 
 app.use(function (req, res, next){
-    res.status(404).send("Error 404 - Sorry, can't find this page for you!")
+    res.status(404).render('error')
 });
 
