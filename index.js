@@ -2,10 +2,9 @@ const express = require('express')
 const pug = require('pug');
 const app = express()
 const port = 3000
-
+app.engine('pug',pug.__express)
 app.set('view engine', 'pug')
 var path = require('path');
-app.set('views', path.join(__dirname, '/pugfilesOrigin'));
 
 
 app.get('/',(req, res) =>{
