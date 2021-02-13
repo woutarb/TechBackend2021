@@ -1,0 +1,37 @@
+-
+    const userList = [
+        {
+            'firstName':'Clara',
+            'age': '50',
+            'gender': 'f',
+            'beers':'593'
+        },
+        {
+            'firstName':'Pien',
+            'age': '30',
+            'gender': 'f',
+            'beers':'248'
+        },
+        {
+            'firstName':'Willem',
+            'age': '25',
+            'gender': 'm',
+            'beers':'153'
+        },
+        {
+            'firstName':'Karel',
+            'age': '21',
+            'gender': 'm',
+            'beers':'534'
+        }
+    ]
+
+#userList 
+
+    each user in userList 
+        .user 
+            .firstName= user.firstName
+            .age= user.age 
+            .percentage= user.beers
+    else 
+        .oh-no You have no users left to see!
