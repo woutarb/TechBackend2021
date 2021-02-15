@@ -2,4 +2,13 @@ extends templates/layout
 
 block main 
     main 
-        p Welcome op de main page
+        include variables/userData
+        #userList 
+
+            each user in userList 
+                .user 
+                    h2.firstName= user.firstName
+                    h3.age= user.age 
+                    h3.percentage= user.beers
+            else 
+                .oh-no You have no users left to see!
