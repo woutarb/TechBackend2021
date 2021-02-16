@@ -15,13 +15,25 @@
     </div>
     <main> 
       <form action="/add_movie" method="POST">
-        <p> 
-          <input type="text" name="name" value="Wouter Bijnsdorp"/>         year: 
-          <input type="date" name="birthdate" value=""/>         gender: 
-          <input type="text" name="genderOwn" value=""/>          gender: 
-          <input type="text" name="genderOther" value=""/>         year: 
-          <input type="range" name="ageRange" value=""/>
-          <input type="range" name="percentRange" value=""/>
+        <p>
+          <div class="userinfo"></div>
+          <label for="name">Your name is</label>
+          <input type="text" name="name" value="Wouter Bijnsdorp"/>
+          <label for="birthdate">, you were born on </label>
+          <input type="date" name="birthdate" value="1998-12-09"/>
+          <label for="genderOwn">. You identify as a </label>
+          <input type="text" name="genderOwn" value="man"/>
+        </p>
+        <p>
+          <div class="userPreference"></div>
+          <label for="genderOther">Your dating preference is people that identify as </label>
+          <input type="text" name="genderOther" value="women"/>
+          <label for="ageRange">and who are around </label>
+          <input type="text" name="ageRange" value=""/>
+          <label for="percentRange">years old. </label>
+        </p>
+        <p>  You think a potential match should have selected at least
+          <input type="text" name="percentRange" value=""/> percent of the <a href="selection"> beer</a> you have.
           <input type="submit" value="Save"/>
         </p>
       </form>

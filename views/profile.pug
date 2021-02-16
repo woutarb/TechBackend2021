@@ -4,17 +4,22 @@ block main
     main 
         form(action='/add_movie', method='POST')
             p
-                | 
+                .userinfo
+                label(for='name') Your name is
                 input(type='text', name='name', value='Wouter Bijnsdorp')
-                |          year: 
-                input(type='date', name='birthdate', value='')
-                |          gender: 
-                input(type='text', name='genderOwn', value='')
-                |           gender: 
-                input(type='text', name='genderOther', value='')
-                |          year: 
-                input(type='range', name='ageRange', value='')
-                input(type='range', name='percentRange', value='')
-
+                label(for='birthdate') , you were born on 
+                input(type='date', name='birthdate', value='1998-12-09')
+                label(for='genderOwn') . You identify as a 
+                input(type='text', name='genderOwn', value='man')
+            p
+                .userPreference
+                label(for='genderOther') Your dating preference is people that identify as 
+                input(type='text', name='genderOther', value='women')
+                label(for='ageRange') and who are around 
+                input(type='text', name='ageRange', value='')
+                label(for='percentRange') years old. 
                 
+            p   You think a potential match should have selected at least
+                input(type='text', name='percentRange', value='')
+                |  percent of the <a href="selection"> beer</a> you have.
                 input(type='submit', value='Save')
