@@ -14,7 +14,17 @@
       </ul>
     </div>
     <main> 
-      <p>your profile  </p>
+      <form action="/add_movie" method="POST">
+        <p> 
+          <input type="text" name="name" value="Wouter Bijnsdorp"/>         year: 
+          <input type="date" name="birthdate" value=""/>         gender: 
+          <input type="text" name="genderOwn" value=""/>          gender: 
+          <input type="text" name="genderOther" value=""/>         year: 
+          <input type="range" name="ageRange" value=""/>
+          <input type="range" name="percentRange" value=""/>
+          <input type="submit" value="Save"/>
+        </p>
+      </form>
     </main>
     <footer>
       <p>'Powered by Wouter Bijnsdorp'</p>
