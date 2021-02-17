@@ -2,10 +2,10 @@ extends templates/layout
 
 block main 
     main 
-        form(action='/add_movie', method='POST')
+        form(action='/profile/add_user', method='POST')
             p
                 .userinfo
-                label(for='name') Your name is
+                label(for='name') Your name is 
                 input(type='text', name='name', value='Wouter Bijnsdorp')
                 label(for='birthdate') , you were born on 
                 input(type='date', name='birthdate', value='1998-12-09')
@@ -15,11 +15,12 @@ block main
                 .userPreference
                 label(for='genderOther') Your dating preference is people that identify as 
                 input(type='text', name='genderOther', value='women')
-                label(for='ageRange') and who are around 
+                label(for='ageRange')  and who are around 
                 input(type='text', name='ageRange', value='23')
-                label(for='percentRange') years old. 
+                label(for='percentRange')  years old. 
                 
-            p   You think a potential match should have selected at least
+            p   You think a potential match should have selected at least 
                 input(type='text', name='percentRange', value='50')
-                |  percent of the <a href="selection"> beer</a> you have.
-                input(type='submit', value='Save')
+                |  percent of the <a href="selection"> beer</a> you have. 
+            
+            input(type='submit', value='Save')

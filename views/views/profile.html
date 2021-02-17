@@ -2,7 +2,7 @@
 <html>
   <head> 
     <meta name="viewport" content="widt=device-width, initial-scale=1"/>
-    <title>My First Pug Page </title>
+    <title>Beermatching </title>
   </head>
   <body>
     <div class="logo"><img src=""/></div>
@@ -14,10 +14,10 @@
       </ul>
     </div>
     <main> 
-      <form action="/add_movie" method="POST">
+      <form action="/profile/add_user" method="POST">
         <p>
           <div class="userinfo"></div>
-          <label for="name">Your name is</label>
+          <label for="name">Your name is </label>
           <input type="text" name="name" value="Wouter Bijnsdorp"/>
           <label for="birthdate">, you were born on </label>
           <input type="date" name="birthdate" value="1998-12-09"/>
@@ -28,14 +28,14 @@
           <div class="userPreference"></div>
           <label for="genderOther">Your dating preference is people that identify as </label>
           <input type="text" name="genderOther" value="women"/>
-          <label for="ageRange">and who are around </label>
+          <label for="ageRange"> and who are around </label>
           <input type="text" name="ageRange" value="23"/>
-          <label for="percentRange">years old. </label>
+          <label for="percentRange"> years old. </label>
         </p>
-        <p>  You think a potential match should have selected at least
-          <input type="text" name="percentRange" value="50"/> percent of the <a href="selection"> beer</a> you have.
-          <input type="submit" value="Save"/>
+        <p>  You think a potential match should have selected at least 
+          <input type="text" name="percentRange" value="50"/> percent of the <a href="selection"> beer</a> you have. 
         </p>
+        <input type="submit" value="Save"/>
       </form>
     </main>
     <footer>
