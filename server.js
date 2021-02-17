@@ -1,5 +1,6 @@
 const express = require('express')
 const pug = require('pug');
+const multer = require('multer')
 const app = express()
 const port = 3000
 app.engine('pug',pug.__express)
@@ -14,6 +15,10 @@ app.get('/',(req, res) =>{
 app.get('/profile',(req, res) =>{
     res.render('profile')
 });
+
+app.post('/profile', upload.none(), function (req, res, next) {
+
+})
 
 app.get('/user',(req, res) =>{
     res.render('otheruser')
