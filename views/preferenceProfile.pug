@@ -2,13 +2,15 @@ extends templates/layout
 
 block main 
     main 
-        form(action='/profile', method='POST')
+        form(action='/preferences', method='POST')
             p
                 .userPreference
                 label(for='genderOther') Your dating preference is people that identify as 
                 input(type='text', name='genderOther', value='women')
-                label(for='ageRange')  and who are around 
-                input(type='text', name='ageRange', value='23')
+                label(for='minAgeRange')  and who are between 
+                input(type='text', name='minAgeRange', value='23')
+                label(for='maxAgeRange')  and who are between 
+                input(type='text', name='maxAgeRange', value='25')
                 label(for='percentRange')  years old. 
                     
             p   You think a potential match should have selected at least 
