@@ -1,24 +1,27 @@
 const express = require('express')
 const pug = require('pug');
-const multer = require('multer')
+const path = require('path');
+const multer = require('multer');
+let upload = multer({ dest: 'uploads/' })
 const app = express()
 const port = 3000
 app.engine('pug',pug.__express)
 app.set('view engine', 'pug')
-var path = require('path');
-
 
 app.get('/',(req, res) =>{
     res.render('index')
 });
 
+app.get('/home',(req, res) =>{
+    res.render('index')
+});
+
+app.get('/preferences',(req, res) =>{
+    res.render('preferenceProfile')
+});
 app.get('/profile',(req, res) =>{
     res.render('profile')
 });
-
-app.post('/profile', upload.none(), function (req, res, next) {
-
-})
 
 app.get('/user',(req, res) =>{
     res.render('otheruser')

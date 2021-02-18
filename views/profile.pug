@@ -2,7 +2,7 @@ extends templates/layout
 
 block main 
     main 
-        form(action='/profile/add_user', method='POST')
+        form(action='/profile', method='POST')
             p
                 .userinfo
                 label(for='name') Your name is 
@@ -11,16 +11,5 @@ block main
                 input(type='date', name='birthdate', value='1998-12-09')
                 label(for='genderOwn') . You identify as a 
                 input(type='text', name='genderOwn', value='man')
-            p
-                .userPreference
-                label(for='genderOther') Your dating preference is people that identify as 
-                input(type='text', name='genderOther', value='women')
-                label(for='ageRange')  and who are around 
-                input(type='text', name='ageRange', value='23')
-                label(for='percentRange')  years old. 
-                
-            p   You think a potential match should have selected at least 
-                input(type='text', name='percentRange', value='50')
-                |  percent of the <a href="selection"> beer</a> you have. 
-            
+
             input(type='submit', value='Save')

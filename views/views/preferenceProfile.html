@@ -16,13 +16,15 @@
     <main> 
       <form action="/profile" method="POST">
         <p>
-          <div class="userinfo"></div>
-          <label for="name">Your name is </label>
-          <input type="text" name="name" value="Wouter Bijnsdorp"/>
-          <label for="birthdate">, you were born on </label>
-          <input type="date" name="birthdate" value="1998-12-09"/>
-          <label for="genderOwn">. You identify as a </label>
-          <input type="text" name="genderOwn" value="man"/>
+          <div class="userPreference"></div>
+          <label for="genderOther">Your dating preference is people that identify as </label>
+          <input type="text" name="genderOther" value="women"/>
+          <label for="ageRange"> and who are around </label>
+          <input type="text" name="ageRange" value="23"/>
+          <label for="percentRange"> years old. </label>
+        </p>
+        <p>  You think a potential match should have selected at least 
+          <input type="text" name="percentRange" value="50"/> percent of the <a href="selection"> beer</a> you have. 
         </p>
         <input type="submit" value="Save"/>
       </form>
