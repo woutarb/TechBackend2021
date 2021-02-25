@@ -5,6 +5,7 @@ const multer = require('multer');
 let upload = multer({ dest: 'uploads/' })
 const app = express()
 const port = 3000
+require('dotenv').config()
 app.engine('pug',pug.__express)
 app.set('view engine', 'pug')
 
