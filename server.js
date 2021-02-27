@@ -1,5 +1,7 @@
 const express = require('express')
 const pug = require('pug');
+const slug = require('slug');
+const slug = require('body-parser');
 const path = require('path');
 const multer = require('multer');
 let upload = multer({ dest: 'uploads/' })
@@ -8,6 +10,17 @@ const port = 3000
 require('dotenv').config()
 app.engine('pug',pug.__express)
 app.set('view engine', 'pug')
+
+function add(req, res){
+    var id = slug(req.body.title).toLowerCase()
+    data.push({
+        genderPref:req.body.genderOther,
+        minRange: req.body.minAgeRange,
+        maxRange: req.body.maxAgeRange,
+        percentOverlap: req.body.percentRange 
+    })
+    res,redirect('preferences' + genderPref + minRange + maxRange + percentOverlap)
+}
 
 app.get('/',(req, res) =>{
     res.render('index')
@@ -20,6 +33,8 @@ app.get('/home',(req, res) =>{
 app.get('/preferences',(req, res) =>{
     res.render('preferenceProfile')
 });
+app.post('/preferences', add);
+
 app.get('/profile',(req, res) =>{
     res.render('profile')
 });
