@@ -11,7 +11,7 @@ require('dotenv').config()
 app.engine('pug',pug.__express)
 app.set('view engine', 'pug')
 
-function add(req, res){
+function addPref(req, res){
     var id = slug(req.body.title).toLowerCase()
     data.push({
         genderPref:req.body.genderOther,
@@ -33,12 +33,11 @@ app.get('/home',(req, res) =>{
 app.get('/preferences',(req, res) =>{
     res.render('preferenceProfile')
 });
-app.post('/preferences', add);
+app.post('/preferences', addPref);
 
 app.get('/profile',(req, res) =>{
     res.render('profile')
 });
-app.post('/profile', add);
 
 app.get('/user',(req, res) =>{
     res.render('otheruser')
