@@ -38,6 +38,7 @@ app.post('/preferences', add);
 app.get('/profile',(req, res) =>{
     res.render('profile')
 });
+app.post('/profile', add);
 
 app.get('/user',(req, res) =>{
     res.render('otheruser')
