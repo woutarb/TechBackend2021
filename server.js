@@ -13,7 +13,7 @@ app.engine('pug',pug.__express)
 app.set('view engine', 'pug')
 
 const MongoClient = require('mongodb').MongoClient;
-const connectionString = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.o0u7k.mongodb.net/<Cluster0>`
+const connectionString = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@coding-blog-t0xf0.mongodb.net/<dbname>`
 require('dotenv').config()
 
 const client = new MongoClient(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
