@@ -7,6 +7,7 @@ const multer = require('multer');
 let upload = multer({ dest: 'uploads/' })
 const app = express()
 const port = 3000
+const connectionString = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@coding-blog-t0xf0.mongodb.net/<dbname>`
 require('dotenv').config()
 app.engine('pug',pug.__express)
 app.set('view engine', 'pug')
