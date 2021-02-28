@@ -4,13 +4,24 @@ const slug = require('slug');
 const bodyParser = require('body-parser');
 const path = require('path');
 const multer = require('multer');
+
 let upload = multer({ dest: 'uploads/' })
 const app = express()
 const port = 3000
-const connectionString = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@coding-blog-t0xf0.mongodb.net/<dbname>`
-require('dotenv').config()
+
 app.engine('pug',pug.__express)
 app.set('view engine', 'pug')
+
+const MongoClient = require('mongodb').MongoClient;
+const connectionString = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@coding-blog-t0xf0.mongodb.net/<dbname>`
+require('dotenv').config()
+
+const client = new MongoClient(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
+client.connect(err => {
+  const collection = client.db("test").collection("devices");
+  // perform actions on the collection object
+  client.close();
+});
 
 function addPref(req, res){
     data.push({
@@ -21,17 +32,7 @@ function addPref(req, res){
     })
     res,redirect('preferences' + genderPref + minRange + maxRange + percentOverlap)
 }
-/*function addUser(req, res){
-    var id = slug(req.body.title).toLowerCase()
-    data.push({
-        genderPref:req.body.genderOther,
-        minRange: req.body.minAgeRange,
-        maxRange: req.body.maxAgeRange,
-        percentOverlap: req.body.percentRange 
-    })
-    res,redirect('preferences' + genderPref + minRange + maxRange + percentOverlap)
-}
-*/
+
 app.get('/',(req, res) =>{
     res.render('index')
 });
