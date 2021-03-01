@@ -24,7 +24,7 @@ client.connect(err => {
 });
 
 function addPref(req, res){
-    data.push({
+    upload.push({
         genderPref:req.body.genderOther,
         minRange: req.body.minAgeRange,
         maxRange: req.body.maxAgeRange,
