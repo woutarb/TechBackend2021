@@ -23,16 +23,6 @@ client.connect(err => {
   client.close();
 });
 
-function addPref(req, res){
-    upload.push({
-        genderPref:req.body.genderOther,
-        minRange: req.body.minAgeRange,
-        maxRange: req.body.maxAgeRange,
-        percentOverlap: req.body.percentRange 
-    })
-    res,redirect('preferences' + genderPref + minRange + maxRange + percentOverlap)
-}
-
 app.get('/',(req, res) =>{
     res.render('index')
 });
@@ -44,7 +34,18 @@ app.get('/home',(req, res) =>{
 app.get('/preferences',(req, res) =>{
     res.render('preferenceProfile')
 });
+
 app.post('/preferences', addPref);
+
+function addPref(req, res){
+    upload.push({
+        genderPref:req.body.genderOther,
+        minRange: req.body.minAgeRange,
+        maxRange: req.body.maxAgeRange,
+        percentOverlap: req.body.percentRange 
+    })
+    res,redirect(`preferences${genderPref}${minRange}${maxRange}${percentOverlap}`)
+}
 
 app.get('/profile',(req, res) =>{
     res.render('profile')
