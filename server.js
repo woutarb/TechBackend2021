@@ -23,6 +23,13 @@ client.connect(err => {
   client.close();
 });
 
+app.use(express.json())
+app.use(
+    bodyParser.urlencoded({
+      extended: true,
+    })
+  );
+
 app.get('/',(req, res) =>{
     res.render('index')
 });
@@ -44,7 +51,7 @@ function addPref(req, res){
         maxRange: req.body.maxAgeRange,
         percentOverlap: req.body.percentRange 
     })
-    res,redirect(`preferences${genderPref}${minRange}${maxRange}${percentOverlap}`)
+    res.redirect(`preferences${genderPref}${minRange}${maxRange}${percentOverlap}`)
 }
 
 app.get('/profile',(req, res) =>{
