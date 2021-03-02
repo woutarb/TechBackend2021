@@ -12,9 +12,11 @@ const port = 3000
 app.engine('pug',pug.__express)
 app.set('view engine', 'pug')
 
-const MongoClient = require('mongodb').MongoClient;
+const { MongoClient } = require('mongodb');
 const connectionString = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.o0u7k.mongodb.net/<Cluster0>`
 require('dotenv').config()
+
+let db = null;
 
 const client = new MongoClient(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
 client.connect(err => {
