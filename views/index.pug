@@ -3,13 +3,10 @@ extends templates/layout
 block main 
     main 
         <a href="preferences">Preferences</a>
-        include variables/userData
-        #userList 
-
             each user in userList 
                 .user 
-                    h2.firstName= user.firstName
-                    h3.age= user.age 
-                    h3.percentage= user.beers
+                    h2 #{user.firstName}
+                    h3 #{user.age} 
+                    h3 #{user.beers}
             else 
-                .oh-no You have no users left to see!
+                .oh-no You have no users to see! Maybe try changing your preferences?

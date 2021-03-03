@@ -9,8 +9,18 @@ let upload = multer({ dest: 'uploads/' })
 const app = express()
 const port = 3000
 
-app.engine('pug',pug.__express)
+app.set('views', __dirname + '/views');
 app.set('view engine', 'pug')
+/*
+app.use(express.json())
+app.use(
+    bodyParser.urlencoded({
+      extended: true,
+    })
+  );
+*/
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 const { MongoClient } = require('mongodb');
 const connectionString = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.o0u7k.mongodb.net/<Cluster0>`
@@ -25,19 +35,42 @@ client.connect(err => {
   client.close();
 });
 
-app.use(express.json())
-app.use(
-    bodyParser.urlencoded({
-      extended: true,
-    })
-  );
+const userList = [
+        {
+            firstName:'Clara',
+            age: '50',
+            gender: 'f',
+            beers:'53'
+        },
+        {
+            firstName:'Pien',
+            age: '30',
+            gender: 'f',
+            beers:'24'
+        },
+        {
+            firstName:'Willem',
+            age: '25',
+            gender: 'm',
+            beers:'13'
+        },
+        {
+            firstName:'Karel',
+            age: '21',
+            gender: 'm',
+            beers:'53'
+        }
+    ]
+
+console.log(typeof userList);
+
 
 app.get('/',(req, res) =>{
-    res.render('index')
+    res.render('index', {userList:userList})
 });
 
 app.get('/home',(req, res) =>{
-    res.render('index')
+    res.render('index', {userList:userList})
 });
 
 app.get('/preferences',(req, res) =>{
@@ -56,6 +89,7 @@ function addPref(req, res){
     res.redirect(`preferences${genderPref}${minRange}${maxRange}${percentOverlap}`)
     */
    console.log(req.body);
+   res.status(200).send({message:'Done!'});
 }
 
 app.get('/profile',(req, res) =>{
