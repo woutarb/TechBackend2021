@@ -80,14 +80,14 @@ app.get('/preferences',(req, res) =>{
 app.post('/preferences', addPref);
 
 function addPref(req, res){
-    /*upload.push({
+    upload.push({
         genderPref:req.body.genderOther,
         minRange: req.body.minAgeRange,
         maxRange: req.body.maxAgeRange,
         percentOverlap: req.body.percentRange 
     })
     res.redirect(`preferences${genderPref}${minRange}${maxRange}${percentOverlap}`)
-    */
+    
    console.log(req.body);
    res.status(200).send({message:'Done!'});
 }
