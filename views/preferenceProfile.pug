@@ -2,7 +2,7 @@ extends templates/layout
 
 block main 
     main 
-        form(action='/preferences', method='POST')
+        form(action='/preferences', method='POST' enctype='multipart/form-data')
             p
                 .userPreference
                 label(for='genderOther') Your dating preference is people that identify as 
