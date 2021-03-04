@@ -5,7 +5,9 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const multer = require('multer');
 
-let upload = multer({ dest: 'uploads/' })
+//let upload = multer({ dest: 'uploads/' })
+let genderPref, minRange, maxRange, percentOverlap
+let upload = [genderPref, minRange, maxRange, percentOverlap]
 const app = express()
 const port = 3000
 
@@ -83,12 +85,12 @@ app.post('/preferences', addPref);
 
 function addPref(req, res){
     upload.push({
-        genderPref:req.body.genderOther,
+        genderPref: req.body.genderOther,
         minRange: req.body.minAgeRange,
         maxRange: req.body.maxAgeRange,
         percentOverlap: req.body.percentRange 
     })
-    res.redirect(`preferences${genderPref}${minRange}${maxRange}${percentOverlap}`)
+    res.redirect([status, 200]`preferences${genderPref}${minRange}${maxRange}${percentOverlap}`)
     
    console.log(req.body);
    res.status(200).send({message:'Done!'});
@@ -114,7 +116,7 @@ app.listen(port, ()=>{
     console.log(`Example app listening on port ${port}!`)
 });
 
-app.use(function (req, res, next){
+app.use(function (req, res){
     res.status(404).render('error')
 });
 
