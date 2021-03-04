@@ -2,7 +2,10 @@ extends templates/layout
 
 block main 
     main 
-        <a href="preferences">Preferences</a>
+        preferenceDiv
+            <a href="preferences">Change your preferences here!</a>
+
+        .usersListed
             each user in userList 
                 .user 
                     h2 #{user.firstName}
