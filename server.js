@@ -11,6 +11,7 @@ const port = 3000
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'pug')
+app.use(express.static(path.join(__dirname, 'Public')));
 /*
 app.use(express.json())
 app.use(
@@ -20,6 +21,7 @@ app.use(
   );
 */
 app.use(express.json());
+
 app.use(express.urlencoded({ extended: false }));
 
 const { MongoClient } = require('mongodb');
