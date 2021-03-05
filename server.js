@@ -1,9 +1,11 @@
 const express = require('express')
 const pug = require('pug');
 const slug = require('slug');
+require('dotenv').config()
 const bodyParser = require('body-parser');
 const path = require('path');
 const multer = require('multer');
+const { MongoClient } = require('mongodb');
 
 //let upload = multer({ dest: 'uploads/' })
 let genderPref, minRange, maxRange, percentOverlap
@@ -26,10 +28,9 @@ app.use(express.json());
 
 app.use(express.urlencoded({ extended: false }));
 
-const { MongoClient } = require('mongodb');
-const connectionString = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.o0u7k.mongodb.net/<Cluster0>`
-require('dotenv').config()
+const connectionString = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.o0u7k.mongodb.net/<Cluster0>`
 
+console.log(process.env.DB_USER);
 let db = null;
 
 const client = new MongoClient(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -65,9 +66,6 @@ const userList = [
             beers:'53'
         }
     ]
-
-console.log(typeof userList);
-
 
 app.get('/',(req, res) =>{
     res.render('index', {userList:userList})
