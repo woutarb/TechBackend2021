@@ -30,7 +30,6 @@ app.use(express.urlencoded({ extended: false }));
 
 const connectionString = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.o0u7k.mongodb.net/<Cluster0>`
 
-console.log(process.env.DB_USER);
 let db = null;
 
 const client = new MongoClient(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -84,28 +83,12 @@ app.post('/preferences', addPref);
 function addPref(req, res){
     upload.push({
         genderPref: req.body.genderOther,
-        minRange: req.body.minAgeRange,
-        maxRange: req.body.maxAgeRange,
-        percentOverlap: req.body.percentRange 
+        agePref: req.body.agePreference,
+        percentOverlap: req.body.percent
     })
-    res.redirect(`preferences?genderPref=${req.body.genderOther}&minRange=${req.body.minAgeRange}&maxRange=${req.body.maxAgeRange}&percentOverlap=${req.body.percentRange}`)
+    res.redirect(`preferences?genderPref=${req.body.genderOther}&minRange=${req.body.agePreference}&percentOverlap=${req.body.percent}`)
 }
 
-app.get('/profile',(req, res) =>{
-    res.render('profile')
-});
-
-app.get('/user',(req, res) =>{
-    res.render('otheruser')
-});
-
-app.get('/selection',(req, res) =>{
-    res.render('selectbeer')
-});
-
-app.get('/beer',(req, res) =>{
-    res.render('beer')
-});
 
 app.listen(port, ()=>{
     console.log(`Example app listening on port ${port}!`)
