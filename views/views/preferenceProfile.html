@@ -10,26 +10,32 @@
     <div class="topnav">
       <ul>
         <li> <a href="home">Home </a></li>
-        <li> <a href="selection">Beer </a></li>
-        <li> <a href="profile">Profile </a></li>
+        <li> <a href="">Beer </a></li>
+        <li> <a href="">Profile </a></li>
       </ul>
     </div>
     <main> 
-      <form action="/preferences" method="POST" enctype="multipart/form-data">
-        <p>
-          <div class="userPreference"></div>
+      <form action="/preferences" method="POST">
+        <div class="userPreference">
           <label for="genderOther">Your dating preference is people that identify as </label>
-          <input type="text" name="genderOther" value="" required="required"/>
-          <label for="minAgeRange"> and who are between </label>
-          <input type="text" name="minAgeRange" value="" required="required"/>
-          <label for="maxAgeRange"> and  </label>
-          <input type="text" name="maxAgeRange" value="" required="required"/>
-          <label for="percentRange"> years old. </label>
-        </p>
-        <p>  You think a potential match should have selected at least 
-          <input type="text" name="percentRange" value=""/> percent of the <a href="selection"> beer</a> you have. 
-        </p>
-        <input type="submit" value="Save"/>
+          <select name="genderOther" value="" required="required">
+            <option value="man">
+              <p>man</p>
+            </option>
+            <option value="woman">
+              <p>woman</p>
+            </option>
+            <option value="either">
+              <p>either</p>
+            </option>
+          </select>
+          <label for="minAgeRange"> and who are around </label>
+          <input type="number" name="agePreference" min="1" max="100" value="" required="required"/>
+          <label for="range">years old.  Who like about  </label>
+          <input type="number" min="1" max="100" name="percent" value="" required="required"/>
+          <p>percent of the beer you do. </p>
+          <input type="submit" value="Save"/>
+        </div>
       </form>
     </main>
     <footer>

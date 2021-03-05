@@ -11,3 +11,10 @@ ul{
 a:link {
     text-decoration: none;
 }
+
+.userPreference{
+    display: inline-grid;
+}
+.userPreference label{
+    padding: 1em;
+}
