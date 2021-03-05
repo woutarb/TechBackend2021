@@ -90,10 +90,7 @@ function addPref(req, res){
         maxRange: req.body.maxAgeRange,
         percentOverlap: req.body.percentRange 
     })
-    res.redirect([status, 200]`preferences${genderPref}${minRange}${maxRange}${percentOverlap}`)
-    
-   console.log(req.body);
-   res.status(200).send({message:'Done!'});
+    res.redirect(`preferences?genderPref=${req.body.genderOther}&minRange=${req.body.minAgeRange}&maxRange=${req.body.maxAgeRange}&percentOverlap=${req.body.percentRange}`)
 }
 
 app.get('/profile',(req, res) =>{
