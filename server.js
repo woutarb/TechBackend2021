@@ -16,14 +16,8 @@ const port = 3000
 app.set('views', __dirname + '/views');
 app.set('view engine', 'pug')
 app.use(express.static(path.join(__dirname, 'Public')));
-/*
-app.use(express.json())
-app.use(
-    bodyParser.urlencoded({
-      extended: true,
-    })
-  );
-*/
+app.use(bodyParser.urlencoded({ extended: true }))
+
 app.use(express.json());
 
 app.use(express.urlencoded({ extended: false }));
@@ -31,6 +25,8 @@ app.use(express.urlencoded({ extended: false }));
 const connectionString = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.o0u7k.mongodb.net/<Cluster0>`
 
 let db = null;
+
+
 
 const client = new MongoClient(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
 client.connect(err => {
