@@ -21,21 +21,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 const connectionString = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.o0u7k.mongodb.net/Cluster0?retryWrites=true&w=majority`
+let preferenceCollection;
+let usersCollection;
 
-/*
-const client = new MongoClient(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
-client.connect(err => {
-  const collection = client.db("test").collection("devices");
-  // perform actions on the collection object
-  client.close();
-});
-*/
 MongoClient.connect(connectionString, { useUnifiedTopology: true })
   .then(client => {
     console.log('Connected to Databases')
     const db = client.db('usersData')
-    const usersCollection = db.collection('users')
-    const preferenceCollection = db.collection('preferences')
+    usersCollection = db.collection('users')
+    preferenceCollection = db.collection('preferences')
   })
   
 const userList = [
