@@ -5,7 +5,7 @@ require('dotenv').config()
 const bodyParser = require('body-parser');
 const path = require('path');
 const multer = require('multer');
-const { MongoClient } = require('mongodb');
+const MongoClient = require('mongodb').MongoClient
 
 //let upload = multer({ dest: 'uploads/' })
 let genderPref, minRange, maxRange, percentOverlap
@@ -22,19 +22,24 @@ app.use(express.json());
 
 app.use(express.urlencoded({ extended: false }));
 
-const connectionString = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.o0u7k.mongodb.net/<Cluster0>`
+const connectionString = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.o0u7k.mongodb.net/Cluster0?retryWrites=true&w=majority`
 
 let db = null;
 
 
-
+/*
 const client = new MongoClient(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
 client.connect(err => {
   const collection = client.db("test").collection("devices");
   // perform actions on the collection object
   client.close();
 });
-
+*/
+MongoClient.connect(connectionString, {useUnifiedTopology: true}, (err, client) => {
+    if (err) return console.error(err)
+    console.log('Connected to Database')
+})
+  
 const userList = [
         {
             firstName:'Clara',
