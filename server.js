@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const multer = require('multer');
 const MongoClient = require('mongodb').MongoClient
+const mongoose = require('mongoose');
 
 //let upload = multer({ dest: 'uploads/' })
 const app = express()
@@ -24,6 +25,7 @@ const connectionString = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_
 let preferenceCollection;
 let usersCollection;
 
+/*
 MongoClient.connect(connectionString, { useUnifiedTopology: true })
   .then(client => {
     console.log('Connected to Databases')
@@ -31,14 +33,20 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
     usersCollection = db.collection('users')
     preferenceCollection = db.collection('preferences')
   })
-  
-app.get('/',(req, res) =>{
+*/
+mongoose.connect(connectionString, {useNewUrlParser: true, useUnifiedTopology: true});
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+
+db.once('open', function() {console.log('connected dbonce-style!')});
+  // we're connected!
+  app.get('/',(req, res) =>{
     const dbUserlist = usersCollection.find().toArray()
     res.render('index', {userList:dbUserlist})
 });
 
 app.get('/home',(req, res) =>{
-    const dbUserlist = db.collection('users').find().toArray()
+    //const dbUserlist = db.collection('users').find().toArray()
     res.render('index', {userList:dbUserlist})
 });
 
