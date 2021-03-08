@@ -26,15 +26,7 @@ const connectionString = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_
 let preferenceCollection;
 let usersCollection;
 
-/*
-MongoClient.connect(connectionString, { useUnifiedTopology: true })
-  .then(client => {
-    console.log('Connected to Databases')
-    const db = client.db('usersData')
-    usersCollection = db.collection('users')
-    preferenceCollection = db.collection('preferences')
-  })
-*/
+
 mongoose.connect(connectionString, {useNewUrlParser: true, useUnifiedTopology: true, dbName:'usersData'});
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -45,19 +37,6 @@ db.once('open', function() {
         if(err) return cole.error(err);
         console.log(User);
     })
-   /*
-    const temp = new models.User({ firstName:
-        "Kyra",
-        age:
-        "20",
-        gender:
-        "f",
-        beers:
-        "56",});
-        temp.save(function(err, user){
-            console.log('user saved!')
-        })
-        */
 });
   // we're connected!
   app.get('/',(req, res) =>{
