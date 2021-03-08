@@ -1,9 +1,11 @@
-import {model, Schema} from "mongoose";
+const mongoose = require('mongoose');
+
 const schemeName = 'User';
-export const userSchema = new Schema({
+const userSchema = new mongoose.Schema({
     firstName: { type: String, required: true },
     age: { type: Number, required: true },
     gender: { type: String, required: true },
     beers: { type: Number,required: true},
 });
-export const User = model(schemeName,userSchema);
+module.exports.User = mongoose.model(schemeName,userSchema);
+module.exports.userSchema = this.userSchema;
