@@ -72,11 +72,11 @@ app.get('/preferences',(req, res) =>{
 });
 
 app.post('/preferences', (req, res) => {
-    let userPref=[
-        genderPref= req.body.genderOther,
-        agePref= req.body.agePreference,
-        percentOverlap= req.body.percent
-    ]
+    let userPref={
+        genderPref: req.body.genderOther,
+        agePref: req.body.agePreference,
+        percentOverlap: req.body.percent
+    }
     res.redirect(`preferences?genderPref=${req.body.genderOther}&minRange=${req.body.agePreference}&percentOverlap=${req.body.percent}`)
     preferenceCollection.insertOne(userPref)
         .then(result =>{
