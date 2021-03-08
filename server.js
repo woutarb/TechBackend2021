@@ -7,6 +7,7 @@ const path = require('path');
 const multer = require('multer');
 const MongoClient = require('mongodb').MongoClient
 const mongoose = require('mongoose');
+import {User, userSchema} from './models/user'
 
 //let upload = multer({ dest: 'uploads/' })
 const app = express()
