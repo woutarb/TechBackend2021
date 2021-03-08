@@ -32,40 +32,17 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
     preferenceCollection = db.collection('preferences')
   })
   
-const userList = [
-        {
-            firstName:'Clara',
-            age: '50',
-            gender: 'f',
-            beers:'53'
-        },
-        {
-            firstName:'Pien',
-            age: '30',
-            gender: 'f',
-            beers:'24'
-        },
-        {
-            firstName:'Willem',
-            age: '25',
-            gender: 'm',
-            beers:'13'
-        },
-        {
-            firstName:'Karel',
-            age: '21',
-            gender: 'm',
-            beers:'53'
-        }
-    ]
 
 app.get('/',(req, res) =>{
-    res.render('index', {userList:userList})
+    const dbUserlist = usersCollection.find()
+    res.render('index', {userList:dbUserlist})
 });
 
 app.get('/home',(req, res) =>{
-    res.render('index', {userList:userList})
+    const dbUserlist = db.collection('users').find()
+    res.render('index', {userList:dbUserlist})
 });
+
 
 app.get('/preferences',(req, res) =>{
     res.render('preferenceProfile')
