@@ -32,14 +32,13 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
     preferenceCollection = db.collection('preferences')
   })
   
-
 app.get('/',(req, res) =>{
-    const dbUserlist = usersCollection.find()
+    const dbUserlist = usersCollection.find().toArray()
     res.render('index', {userList:dbUserlist})
 });
 
 app.get('/home',(req, res) =>{
-    const dbUserlist = db.collection('users').find()
+    const dbUserlist = db.collection('users').find().toArray()
     res.render('index', {userList:dbUserlist})
 });
 
