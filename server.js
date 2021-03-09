@@ -11,6 +11,7 @@ const userModels = require('./models/user');
 const prefModels = require('./models/preference');
 const app = express()
 const port = 3000
+let userId;
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'pug')
@@ -29,17 +30,14 @@ db.on('error', console.error.bind(console, 'connection error:'));
 
   // we're connected!
 app.get('/',(req, res) =>{
-    console.log(req.query.userId);
-    if(typeof(userPref) !== 'undefined'){
-        console.log(userPref._id.typeOf);
-    }else{
-        console.log('userpref is null?');
-    }
     res.redirect('home');
     
 });
 
 app.get('/home',(req, res) =>{
+//    const docs = prefModels.Preference.find({ _id: { $eq: 'userId' } });
+
+
     userModels.User.find((err,Users)=>{
         res.render('index',{userList: Users})
       });
@@ -62,6 +60,7 @@ app.post('/preferences', (req, res) => {
             console.log(err); 
             return;
         } 
+        userId = userPref.id;
         res.redirect('/');
     })
 })
