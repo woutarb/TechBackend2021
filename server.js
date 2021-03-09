@@ -22,7 +22,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 const connectionString = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.o0u7k.mongodb.net/Cluster0?retryWrites=true&w=majority`
-let preferenceCollection=[];
 
 mongoose.connect(connectionString, {useNewUrlParser: true, useUnifiedTopology: true, dbName:'usersData'});
 const db = mongoose.connection;
@@ -30,7 +29,14 @@ db.on('error', console.error.bind(console, 'connection error:'));
 
   // we're connected!
 app.get('/',(req, res) =>{
+    console.log(req.query.userId);
+    if(typeof(userPref) !== 'undefined'){
+        console.log(userPref._id.typeOf);
+    }else{
+        console.log('userpref is null?');
+    }
     res.redirect('home');
+    
 });
 
 app.get('/home',(req, res) =>{
@@ -41,7 +47,7 @@ app.get('/home',(req, res) =>{
 
 
 app.get('/preferences',(req, res) =>{
-    res.render('preferenceProfile')
+    res.render('preferenceProfile');
 });
 
 app.post('/preferences', (req, res) => {
@@ -50,18 +56,20 @@ app.post('/preferences', (req, res) => {
         agePref: req.body.agePreference,
         percentOverlap: req.body.percent
     }
-    res.redirect('/home')
-    preferenceCollection.save(err, userPref)
-        .then(result =>{
-            console.log('saved: ' + result)
-        })
-    .catch(error=>console.error(error))
+    const model = new prefModels.Model(userPref);
+    model.save(function(err, userPref){
+        if(err){
+            console.log(err); 
+            return;
+        } 
+        res.redirect('/');
+    })
 })
 
 app.listen(port, ()=>{
-    console.log(`Beermatching app listening on port ${port}!`)
+    console.log(`Beermatching app listening on port ${port}!`);
 });
 
 app.use(function (req, res){
-    res.status(404).render('error')
+    res.status(404).render('error');
 });
