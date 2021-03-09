@@ -24,8 +24,7 @@ app.use(express.urlencoded({ extended: false }));
 
 const connectionString = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.o0u7k.mongodb.net/Cluster0?retryWrites=true&w=majority`
 let preferenceCollection;
-let usersCollection;
-
+let usersCollection =[];
 
 mongoose.connect(connectionString, {useNewUrlParser: true, useUnifiedTopology: true, dbName:'usersData'});
 const db = mongoose.connection;
@@ -35,20 +34,18 @@ db.once('open', function() {
     console.log('connected dbonce-style!');
     models.User.find(function(err,User){
         if(err) return cole.error(err);
-        console.log(User);
+        usersCollection= usersCollection.concat(User);
     })
 });
+
   // we're connected!
-  app.get('/',(req, res) =>{
-    const dbUserlist = usersCollection.find().toArray()
-    res.render('index', {userList:dbUserlist})
+app.get('/',(req, res) =>{
+    res.redirect('home');
 });
 
 app.get('/home',(req, res) =>{
-    //const dbUserlist = db.collection('users').find().toArray()
-    res.render('index', {userList:dbUserlist})
+    res.render('index', {userList:usersCollection})
 });
-
 
 app.get('/preferences',(req, res) =>{
     res.render('preferenceProfile')
