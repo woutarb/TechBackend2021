@@ -57,14 +57,13 @@ app.post('/preferences', (req, res) => {
         agePref: req.body.agePreference,
         percentOverlap: req.body.percent
     }
-    res.redirect('/')
-    preferenceCollection.insertOne(userPref)
+    res.redirect('/home')
+    preferenceCollection.save(err, userPref)
         .then(result =>{
-            console.log(result)
+            console.log('saved: ' + result)
         })
     .catch(error=>console.error(error))
 })
-
 
 app.listen(port, ()=>{
     console.log(`Example app listening on port ${port}!`)
@@ -73,4 +72,3 @@ app.listen(port, ()=>{
 app.use(function (req, res){
     res.status(404).render('error')
 });
-
