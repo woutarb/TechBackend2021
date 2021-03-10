@@ -40,7 +40,7 @@ app.get('/home',(req, res) =>{
     if(typeof userId === "string"){
         let currentPrefs= prefModels.Preference.findById(userId,(err, preferenceData)=>{
             if(preferenceData.minAgePref >= preferenceData.maxAgePref){
-                res.status(501).send({error:'minAge equal to or less than maxAge!'});
+                res.redirect('/preferences');
             }else{
                 userModels.User.find({})
                 .where('gender').equals(preferenceData.genderPref)
