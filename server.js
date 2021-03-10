@@ -41,15 +41,15 @@ app.get('/home',(req, res) =>{
         let currentPrefs= prefModels.Preference.findById(userId,(err, preferenceData)=>{
             userModels.User.find({})
             .where('gender').equals(preferenceData.genderPref)
-            .where('age').gte(preferenceData.minAgePreference)
-            .where('age').lte(preferenceData.maxAgePreference)
-            .where('beers').gt(preferenceData.percentOverlap)
+            .where('age').gte(preferenceData.minAgePref)
+            .where('age').lte(preferenceData.maxAgePrefe)
+            .where('beers').gte(preferenceData.percentOverlap)
             .exec().then((Users,err)=>{
                 res.render('index',{userList: Users})
             console.log('users: ' + Users);
             console.log('err: ' + err);
             console.log('genderpref: ' + preferenceData.genderPref);
-            console.log('age: ' + preferenceData.minAgePreference + ' '  + preferenceData.maxAgePreference);
+            console.log('age: ' + preferenceData.minAgePref + ' '  + preferenceData.maxAgePref);
             console.log('tasteoverlapandshizzle: ' + preferenceData.percentOverlap);
 
             });
@@ -71,15 +71,15 @@ app.get('/preferences',(req, res) =>{
 app.post('/preferences', (req, res) => {
     let userPref={
         genderPref: req.body.genderOther,
-        minAgePreference: req.body.minAgePreference,
-        maxAgePreference: req.body.maxAgePreference,
+        minAgePref: req.body.minAgePreference,
+        maxAgePref: req.body.maxAgePreference,
         percentOverlap: req.body.percent
     }
-    console.log(minAgePreference);
-    console.log(req.body.minAgePreference);
+   /*
     if(minAgePreference >= maxAgePreference){
         throw new Error('Error 501! Minimum age is smaller than or equal to maximum age! ');
     }
+   */
     const model = new prefModels.Preference(userPref);
     model.save(function(err, userPref){
         if(err){
