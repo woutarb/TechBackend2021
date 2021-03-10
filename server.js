@@ -71,8 +71,8 @@ app.get('/preferences',(req, res) =>{
 app.post('/preferences', (req, res) => {
     let userPref={
         genderPref: req.body.genderOther,
-        maxAgePref: req.body.minAgePreference,
-        minAgePref: req.body.maxAgePreference,
+        minAgePreference: req.body.minAgePreference,
+        maxAgePreference: req.body.maxAgePreference,
         percentOverlap: req.body.percent
     }
     const model = new prefModels.Preference(userPref);
