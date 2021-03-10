@@ -45,7 +45,7 @@ app.get('/home',(req, res) =>{
                 userModels.User.find({})
                 .where('gender').equals(preferenceData.genderPref)
                 .where('age').gte(preferenceData.minAgePref)
-                .where('age').lte(preferenceData.maxAgePrefe)
+                .where('age').lte(preferenceData.maxAgePref)
                 .where('beers').gte(preferenceData.percentOverlap)
                 .exec().then((Users,err)=>{
                     res.render('index',{userList: Users})
