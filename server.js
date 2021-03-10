@@ -35,12 +35,30 @@ app.get('/',(req, res) =>{
 });
 
 app.get('/home',(req, res) =>{
-//    const docs = prefModels.Preference.find({ _id: { $eq: 'userId' } });
+    // userId I can reach
+    if(typeof userId === "string"){
+    console.log('userID is ' + userId);
+        console.log(prefModels);
+        console.log(prefModels.Preference);
+        console.log(userModels);
+        console.log(userModels.User);
+        let currentPrefs= prefModels.Preference.find({_id: {$eq: userId}});
+        console.log(currentPrefs);
+        userModels.User.find((err,Users)=>{
+            res.render('index',{userList: Users})
+        });
 
+    }else{
+        userModels.User.find((err,Users)=>{
+            res.render('index',{userList: Users})
+          });
+    }
+    //    const docs = prefModels.Preference.find({ _id: { $eq: 'userId' } });
+// Usermodels.user i can reach
+console.log('I can find: ' + userModels.User);
+// prefmodels.preference I cANT reach even though I used the same guidelines
+console.log('But I cant find: ' + prefModels.Preference);
 
-    userModels.User.find((err,Users)=>{
-        res.render('index',{userList: Users})
-      });
 });
 
 

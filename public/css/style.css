@@ -18,3 +18,11 @@ a:link {
 .userPreference label{
     padding: 1em;
 }
+.usersListed{
+    text-align: center;
+}
+.user{
+    border-style: groove;
+    border-radius: 25px;
+    margin: 1%;
+}
