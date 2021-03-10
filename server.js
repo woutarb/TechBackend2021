@@ -54,10 +54,6 @@ app.get('/home',(req, res) =>{
           });
     }
     //    const docs = prefModels.Preference.find({ _id: { $eq: 'userId' } });
-// Usermodels.user i can reach
-console.log('I can find: ' + userModels.User);
-// prefmodels.preference I cANT reach even though I used the same guidelines
-console.log('But I cant find: ' + prefModels.Preference);
 
 });
 
