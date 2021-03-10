@@ -2,7 +2,6 @@ const express = require('express')
 const pug = require('pug');
 const slug = require('slug');
 require('dotenv').config()
-//const bodyParser = require('body-parser');
 const path = require('path');
 const multer = require('multer');
 const MongoClient = require('mongodb').MongoClient
@@ -17,7 +16,6 @@ let userId;
 app.set('views', __dirname + '/views');
 app.set('view engine', 'pug')
 app.use(express.static(path.join(__dirname, 'Public')));
-//app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.urlencoded({ extended: false }));
 
 app.use(express.json());
@@ -40,7 +38,7 @@ app.get('/home',(req, res) =>{
     if(typeof userId === "string"){
         let currentPrefs= prefModels.Preference.findById(userId,(err, preferenceData)=>{
             if(preferenceData.minAgePref >= preferenceData.maxAgePref){
-                res.redirect('/preferences');
+                res.status(501).send('Error! You can not have your preference age minimum to be above or equal to the maximum!');
             }else{
                 userModels.User.find({})
                 .where('gender').equals(preferenceData.genderPref)
@@ -49,12 +47,7 @@ app.get('/home',(req, res) =>{
                 .where('beers').gte(preferenceData.percentOverlap)
                 .exec().then((Users,err)=>{
                     res.render('index',{userList: Users})
-                console.log('users: ' + Users);
-                console.log('err: ' + err);
-                console.log('genderpref: ' + preferenceData.genderPref);
-                console.log('age: ' + preferenceData.minAgePref + ' '  + preferenceData.maxAgePref);
-                console.log('tasteoverlapandshizzle: ' + preferenceData.percentOverlap);
-
+  
                 });
             }
         });
@@ -93,7 +86,5 @@ app.listen(port, ()=>{
 });
 
 app.use(function (req, res){
-    res.status(404).render('error');
-    res.status(500).render('error');
-
+    res.render('error');
 });
