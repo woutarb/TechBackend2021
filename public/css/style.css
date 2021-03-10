@@ -26,3 +26,7 @@ a:link {
     border-radius: 25px;
     margin: 1%;
 }
+.oh-no{
+    background-color: red;
+    color: white;
+}

@@ -9,6 +9,7 @@ const MongoClient = require('mongodb').MongoClient
 const mongoose = require('mongoose');
 const userModels = require('./models/user');
 const prefModels = require('./models/preference');
+const { ObjectId } = require('bson');
 const app = express()
 const port = 3000
 let userId;
@@ -37,24 +38,25 @@ app.get('/',(req, res) =>{
 app.get('/home',(req, res) =>{
     // userId I can reach
     if(typeof userId === "string"){
-    console.log('userID is ' + userId);
-        console.log(prefModels);
-        console.log(prefModels.Preference);
-        console.log(userModels);
-        console.log(userModels.User);
-        let currentPrefs= prefModels.Preference.find({_id: {$eq: userId}});
-        console.log(currentPrefs);
-        userModels.User.find((err,Users)=>{
-            res.render('index',{userList: Users})
+        let currentPrefs= prefModels.Preference.findById(userId,(err, preferenceData)=>{
+            userModels.User.find()
+            .where('gender').equals(preferenceData.genderPref)
+            .where('age').equals(preferenceData.agePref)
+            .where('beers').gt(preferenceData.percentOverlap)
+            .exec().then((Users,err)=>{
+                res.render('index',{userList: Users})
+            console.log('users: ' + Users);
+            console.log('err: ' + err);
+            console.log('genderpref: ' + preferenceData.genderPref);
+            });
         });
+       
 
     }else{
         userModels.User.find((err,Users)=>{
             res.render('index',{userList: Users})
           });
     }
-    //    const docs = prefModels.Preference.find({ _id: { $eq: 'userId' } });
-
 });
 
 
@@ -68,7 +70,7 @@ app.post('/preferences', (req, res) => {
         agePref: req.body.agePreference,
         percentOverlap: req.body.percent
     }
-    const model = new prefModels.Model(userPref);
+    const model = new prefModels.Preference(userPref);
     model.save(function(err, userPref){
         if(err){
             console.log(err); 
