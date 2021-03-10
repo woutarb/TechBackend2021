@@ -49,7 +49,7 @@ app.get('/home',(req, res) =>{
             console.log('users: ' + Users);
             console.log('err: ' + err);
             console.log('genderpref: ' + preferenceData.genderPref);
-            console.log('age: ' + preferenceData.agePref);
+            console.log('age: ' + preferenceData.minAgePref + ' '  + preferenceData.maxAgePref);
             console.log('tasteoverlapandshizzle: ' + preferenceData.percentOverlap);
 
             });
