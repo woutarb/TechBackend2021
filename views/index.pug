@@ -4,7 +4,7 @@ block main
     main 
         preferenceDiv
             <a href="preferences">Change your preferences here!</a>
-
+            h1 #{userList.length}
         .usersListed
             each user in userList 
                 .user 

@@ -4,7 +4,7 @@ block main
     main 
         form(action='/preferences', method='POST')
             .userPreference
-                label(for='genderOther') Your dating preference is people that identify as 
+                label(for='genderOther') Your dating preference is someone that identifies as a 
                 select(name='genderOther', value='' required)
                     option(value='woman')
                         p woman                   
@@ -12,9 +12,11 @@ block main
                         p man
                     option(value='either')
                         p either
-                label(for='minAgeRange')  and who are around 
-                input(type='number', name='agePreference', min='18', max='100', value='' required)   
-                label(for='range') years old.  Who like about  
+                label(for='minAgePreference')  and who is around 
+                input(type='number', name='minAgePreference', min='18', max='100', value='' required)   
+                label(for='maxAgePreference')  and  
+                input(type='number', name='maxAgePreference', min='18', max='100', value='' required)   
+                label(for='range') years old.  They should like at least  
                 input(type='number', min='1', max='100', name='percent' value='' required)
                 p percent of the beer you do. 
 

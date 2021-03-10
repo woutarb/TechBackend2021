@@ -17,21 +17,23 @@
     <main> 
       <form action="/preferences" method="POST">
         <div class="userPreference">
-          <label for="genderOther">Your dating preference is people that identify as </label>
+          <label for="genderOther">Your dating preference is someone that identifies as a </label>
           <select name="genderOther" value="" required="required">
-            <option value="women">
+            <option value="woman">
               <p>woman                   </p>
             </option>
-            <option value="men">
+            <option value="man">
               <p>man</p>
             </option>
             <option value="either">
               <p>either</p>
             </option>
           </select>
-          <label for="minAgeRange"> and who are around </label>
-          <input type="number" name="agePreference" min="18" max="100" value="" required="required"/>
-          <label for="range">years old.  Who like about  </label>
+          <label for="minAgePreference"> and who is around </label>
+          <input type="number" name="minAgePreference" min="18" max="100" value="" required="required"/>
+          <label for="maxAgePreference"> and  </label>
+          <input type="number" name="maxAgePreference" min="18" max="100" value="" required="required"/>
+          <label for="range">years old.  They should like at least  </label>
           <input type="number" min="1" max="100" name="percent" value="" required="required"/>
           <p>percent of the beer you do. </p>
           <input type="submit" value="Save"/>
