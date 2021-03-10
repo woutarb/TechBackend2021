@@ -10,7 +10,7 @@ const mongoose = require('mongoose');
 const userModels = require('./models/user');
 const prefModels = require('./models/preference');
 const { ObjectId } = require('bson');
-const app = express()
+const app = express();
 const port = 3000
 let userId;
 
