@@ -80,6 +80,8 @@ app.get('/preferences',(req, res) =>{
 
 // when posting preferences, store them in userPref and save them in the database, mongo creates a id to look on through the ddatabase with
 app.post('/preferences', (req, res) => {
+    if(typeof userId === "string"){
+    }
     let userPref={
         genderPref: req.body.genderOther,
         minAgePref: req.body.minAgePreference,
