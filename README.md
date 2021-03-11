@@ -15,11 +15,14 @@ If you prefer cloning it in the CLI instead of downloading a ZIP, run the follow
 
 With npm installed, open your terminal at the folder in which you unpacked the data of this repo and run the following commands:
 ### Installing dependencies
-```` npm install ````
-### Open server on port 3000 by default
+You can install the dependencies of this project by running
+```` npm install ```` in the folder the clone is in.
+### Open server 
+The server will open on port 3000 by default by using; 
 ```` npm start ````
 
-### Set up your .env file for a MongoDB connecting to include
+### Set up your .env 
+Set up your .env file for a MongoDB connection to include;
 ```` 
 DB_USER=<Your Username>
 DB_PASS=<Your password>
