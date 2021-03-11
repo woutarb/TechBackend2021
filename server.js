@@ -106,9 +106,7 @@ app.post('/preferences', (req, res) => {
     })
 })
 
-
 app.patch('/preferences', (req, res) => {
-console.log('Ive been hit by, Ive been struck by, a patchreq...');
     if(typeof userId === "string"){
         let newUserPref={
             genderPref: req.body.genderOther,
@@ -133,6 +131,16 @@ console.log('Ive been hit by, Ive been struck by, a patchreq...');
     }else{
     res.render('error');
     }
+})
+
+app.delete('/preferences', (req,res)=>{
+    if(typeof userId === "string"){
+        console.log('DELETION TIIIIIMMMEMEE BABY')
+        prefModels.Preference.deleteOne({_id:userId},(err, preferenceData)=>{
+            res.redirect('/')
+        });
+        // userId = null;
+        }
 })
 
 // make sure to listen on the correct port

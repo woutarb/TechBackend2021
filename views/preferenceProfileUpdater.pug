@@ -2,6 +2,9 @@ extends templates/layout
 
 block main 
     main 
+        form(method='POST' action=`/preferences?_method=DELETE`)
+            button(type="submit") Clear your preferences by clicking here!
+
         form(method='POST' action=`/preferences?_method=PATCH`)
             .userPreference
                 label(for='genderOther') Your dating preference is someone that identifies as a 
