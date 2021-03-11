@@ -1,7 +1,7 @@
 {
   "name": "techdatingbackend2021",
   "version": "1.0.0",
-  "description": "\"Package to calculate match % in users based on beer preferences\"",
+  "description": "\"Package to filter users from database to client based on user preferences\"",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -33,6 +33,6 @@
     "pug-cli": "^1.0.0-alpha6"
   },
   "devDependencies": {
-    
+
   }
 }
