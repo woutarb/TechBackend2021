@@ -15,10 +15,11 @@
       </ul>
     </div>
     <main> 
-      <form method="post" action="/preferences">
-        <div class="userPreference">
+      <form action="/preferences" method="PATCH">
+        <div class="userPreference"></div>
+        <h1>'patchpage!'
           <label for="genderOther">Your dating preference is someone that identifies as a </label>
-          <select name="genderOther" value="" required="required">
+          <select name="genderOther" value="#{currentPrefdata.genderPref}" required="required">
             <option value="woman">
               <p>woman                   </p>
             </option>
@@ -30,14 +31,14 @@
             </option>
           </select>
           <label for="minAgePreference"> and who's age is around </label>
-          <input type="number" name="minAgePreference" min="18" max="100" value="" required="required"/>
+          <input type="number" name="minAgePreference" min="18" max="100" value="#{currentPrefdata.minAgePreference}" required="required"/>
           <label for="maxAgePreference"> and  </label>
-          <input type="number" name="maxAgePreference" min="18" max="100" value="" required="required"/>
+          <input type="number" name="maxAgePreference" min="18" max="100" value="#{currentPrefdata.maxAgePreference}" required="required"/>
           <label for="range">years old.  They should like at least  </label>
-          <input type="number" min="1" max="100" name="percent" value="" required="required"/>
+          <input type="number" min="1" max="100" name="percent" value="#{currentPrefdata.percentOverlap}" required="required"/>
           <p>percent of the beer you do. </p>
           <input type="submit" value="Save"/>
-        </div>
+        </h1>
       </form>
     </main>
     <footer>

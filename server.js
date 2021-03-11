@@ -75,13 +75,17 @@ app.get('/home',(req, res) =>{
 
 // render a pug page for filling in preferences
 app.get('/preferences',(req, res) =>{
+    if(typeof userId === "string"){
+        let currentPrefs= prefModels.Preference.findById(userId,(err, preferenceData)=>{
+            res.render('preferenceProfileUpdater', {preferenceData: preferenceData})
+        });
+    }else{
     res.render('preferenceProfile');
+    }
 });
 
 // when posting preferences, store them in userPref and save them in the database, mongo creates a id to look on through the ddatabase with
 app.post('/preferences', (req, res) => {
-    if(typeof userId === "string"){
-    }
     let userPref={
         genderPref: req.body.genderOther,
         minAgePref: req.body.minAgePreference,
@@ -97,6 +101,35 @@ app.post('/preferences', (req, res) => {
         userId = userPref.id;
         res.redirect('/');
     })
+})
+
+
+app.patch('/preferences', (req, res) => {
+console.log('Ive been hit by, Ive been struck by, a patchreq...');
+    if(typeof userId === "string"){
+        let newUserPref={
+            genderPref: req.body.genderOther,
+            minAgePref: req.body.minAgePreference,
+            maxAgePref: req.body.maxAgePreference,
+            percentOverlap: req.body.percent
+        }   
+        prefModels.Preference.findById(userId,(err, preferenceData)=>{
+            preferenceData.genderPref = newUserPref.genderPref;
+            preferenceData.minAgePref = newUserPref.minAgePref;
+            preferenceData.maxAgePref = newUserPref.maxAgePref;
+            preferenceData.percentOverlap = newUserPref.percentOverlap;
+            preferenceData.save(function(err){
+                if(err){
+                    console.log(err); 
+                    res.render('error');
+                    return;
+                }
+                res.redirect(303, '/'); 
+            })
+        });
+    }else{
+    res.render('error');
+    }
 })
 
 // make sure to listen on the correct port
