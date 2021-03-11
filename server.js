@@ -23,7 +23,7 @@ app.use(express.json());
 const connectionString = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.o0u7k.mongodb.net/Cluster0?retryWrites=true&w=majority`
 
 // Setting up mongoose connection data like the database name, allowing it to error
-mongoose.connect(connectionString, {useNewUrlParser: true, useUnifiedTopology: true, dbName:'usersData'});
+mongoose.connect(connectionString, {useNewUrlParser: true, useUnifiedTopology: true, dbName:process.env.DB_NAME});
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 
