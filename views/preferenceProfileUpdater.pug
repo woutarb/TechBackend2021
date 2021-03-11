@@ -2,7 +2,7 @@ extends templates/layout
 
 block main 
     main 
-        form(method = 'patch', action='/preferences?_method=put')
+        form(method='POST' action=`/preferences?_method=PATCH`)
             .userPreference
                 label(for='genderOther') Your dating preference is someone that identifies as a 
                 select(name='genderOther', required)
@@ -20,4 +20,4 @@ block main
                 input(type='number', min='1', max='100', name='percent' value=preferenceData.percentOverlap required)
                 p percent of the beer you do. 
 
-                input(type='submit', value='Save')
+                button(type="submit") Save

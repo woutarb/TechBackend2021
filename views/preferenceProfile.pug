@@ -2,7 +2,7 @@ extends templates/layout
 
 block main 
     main 
-        form(method = 'post', action='/preferences')
+        form(method = 'post', action='/preferences') 
             .userPreference
                 label(for='genderOther') Your dating preference is someone that identifies as a 
                 select(name='genderOther', value='' required)

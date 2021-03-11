@@ -27,12 +27,10 @@
   "dependencies": {
     "dotenv": "^8.2.0",
     "express": "^4.16.1",
+    "method-override": "^3.0.0",
     "mongoose": "^5.11.15",
     "nodemon": "^2.0.7",
     "pug": "^3.0.0",
     "pug-cli": "^1.0.0-alpha6"
-  },
-  "devDependencies": {
-
   }
 }

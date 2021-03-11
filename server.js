@@ -1,7 +1,8 @@
 // The requires for needed packages
-const express = require('express')
+const express = require('express');
 const pug = require('pug');
-require('dotenv').config()
+var methodOverride = require('method-override');
+require('dotenv').config();
 const mongoose = require('mongoose');
 const userModels = require('./models/user');
 const prefModels = require('./models/preference');
@@ -15,9 +16,10 @@ let userId;
 // Setting the view engine, setting the directory name for views & making sure the static files know where to look
 app.set('views', __dirname + '/views');
 app.set('view engine', 'pug')
+app.use(methodOverride('_method'))
 app.use(express.static(path.join(__dirname, 'Public')));
-app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 // Setting up the string needed to connect to the database, using ENV with a healthy combination of gitignore to keep information safe.
 const connectionString = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.o0u7k.mongodb.net/Cluster0?retryWrites=true&w=majority`
@@ -26,6 +28,7 @@ const connectionString = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_
 mongoose.connect(connectionString, {useNewUrlParser: true, useUnifiedTopology: true, dbName:process.env.DB_NAME});
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
+
 
 // Making sure the base url goes to the home page
 app.get('/',(req, res) =>{
