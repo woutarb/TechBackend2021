@@ -135,11 +135,10 @@ app.patch('/preferences', (req, res) => {
 
 app.delete('/preferences', (req,res)=>{
     if(typeof userId === "string"){
-        console.log('DELETION TIIIIIMMMEMEE BABY')
         prefModels.Preference.deleteOne({_id:userId},(err, preferenceData)=>{
             res.redirect('/')
         });
-        // userId = null;
+        userId = null;
         }
 })
 
