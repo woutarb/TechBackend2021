@@ -1,15 +1,11 @@
 // The requires for needed packages
 const express = require('express')
 const pug = require('pug');
-const slug = require('slug');
 require('dotenv').config()
-const path = require('path');
-const multer = require('multer');
-const MongoClient = require('mongodb').MongoClient
 const mongoose = require('mongoose');
 const userModels = require('./models/user');
 const prefModels = require('./models/preference');
-const { ObjectId } = require('bson');
+const path = require('path');
 
 // Stating what the app and port are, creating a let for a user id.
 const app = express();
