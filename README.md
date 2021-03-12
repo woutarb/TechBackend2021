@@ -5,7 +5,7 @@ However, different users have different standards, so the filtering feature allo
 You can select the gender, the age and the percentage of the same beers you'd like the other to have, allowing you to focus on finding the person who doesn't just have the same taste, but is also to your taste.
 
 ## Live preview
-The live preview is live at this https://beermatching-app.herokuapp.com/home
+The live preview is live at this https://beermatching-app.herokuapp.com/
 
 ## Setting it up locally
 ### Cloning
