@@ -10,7 +10,7 @@ const path = require('path');
 
 // Stating what the app and port are, creating a let for a user id.
 const app = express();
-const port = 3000
+const port = process.env.PORT;
 let userId;
 
 // Setting the view engine, setting the directory name for views & making sure the static files know where to look
