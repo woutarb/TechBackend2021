@@ -5,9 +5,9 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm server.js",
-    "serve": "npm serve",
-    "build": "npm build"
+    "start": "node server.js",
+    "serve": "node serve",
+    "build": "node build"
   },
   "repository": {
     "type": "git",
