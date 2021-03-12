@@ -1,0 +1,32 @@
+ul{
+    font-size: 1.3em;
+}
+
+.topnav li{
+    margin: 1em 0 0 1em;
+    list-style: none;
+    display: inline;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+.userPreference{
+    display: inline-grid;
+}
+.userPreference label{
+    padding: 1em;
+}
+.usersListed{
+    text-align: center;
+}
+.user{
+    border-style: groove;
+    border-radius: 25px;
+    margin: 1%;
+}
+.oh-no{
+    background-color: red;
+    color: white;
+}
