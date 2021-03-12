@@ -106,6 +106,7 @@ app.post('/preferences', (req, res) => {
     })
 })
 
+// when posting preferences when there's already existing ones, overwrite them
 app.patch('/preferences', (req, res) => {
     if(typeof userId === "string"){
         let newUserPref={
@@ -133,6 +134,7 @@ app.patch('/preferences', (req, res) => {
     }
 })
 
+// allowing the users to clear their preferences by pressing a button, which deletes their ID and the assorted preferences
 app.delete('/preferences', (req,res)=>{
     if(typeof userId === "string"){
         prefModels.Preference.deleteOne({_id:userId},(err, preferenceData)=>{
